@@ -1,0 +1,18 @@
+.movieWrapper{
+    display: flex;
+    gap: 28px;
+}
+.backBtn{
+    display: flex;
+    padding: 8px;
+    gap: 4px;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    color: black;             
+    text-decoration: none;    
+    transition: color 250ms;   
+}
+.backBtn:hover {
+    color: orange;             
+}
