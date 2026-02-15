@@ -1,11 +1,13 @@
+import { lazy, Suspense } from "react"
 import { NavLink, Routes, Route } from "react-router-dom"
-import HomePage from '../pages/HomePage/HomePage'
-import MoviesPage from '../pages/MoviesPage/MoviesPage'
-import MoviesCast from "./MoviesCast/MoviesCast"
-import MoviesReviews from "./MoviesReviews/MoviesReviews"
-import MovieDetails from "./MovieDetails/MovieDetails"
 import clsx from "clsx"
 import css from "./App.module.css"
+const HomePage =lazy (()=> import ('../pages/HomePage/HomePage'))
+const MoviesPage = lazy (()=> import ('../pages/MoviesPage/MoviesPage'))
+const MoviesCast = lazy (()=> import ("./MoviesCast/MoviesCast"))
+const MoviesReviews = lazy (()=> import ("./MoviesReviews/MoviesReviews"))
+const MovieDetails = lazy (()=> import ("./MovieDetails/MovieDetails"
+))
 
 export default function App (){
 
@@ -20,7 +22,7 @@ export default function App (){
       <NavLink to="/movies" className={linkStyles}>Movies</NavLink>
       
     </nav>
-    
+    <Suspense fallback={<div>Please wait loading page...</div>}>
     <Routes>
         <Route path="/" element={<HomePage/>}></Route>
         <Route path="/movies" element={<MoviesPage/>}></Route>
@@ -29,6 +31,7 @@ export default function App (){
           <Route path="reviews" element={<MoviesReviews/>}></Route>
         </Route>
       </Routes>
+      </Suspense>
     </>
     
 

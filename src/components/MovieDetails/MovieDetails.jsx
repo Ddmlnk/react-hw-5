@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useParams, Outlet } from "react-router-dom";
 import FullMovieData from "../FullMovieData/FullMovieData"
 import MovieSubNavigation from "../MovieSubNavigation/MovieSubNavigation"
@@ -17,7 +17,12 @@ export default function MovieDetails (){
      
       {movie ? <FullMovieData movieData={movie} /> : <p>Loading...</p>}
       <MovieSubNavigation />
+      <Suspense fallback={<div>Please wait loading page...</div>}>
       <Outlet />
+      </Suspense>
+
+
+      
     </div>
     )
 }
